@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>carRemainder App</title>
+	<link rel='stylesheet' href='css/bootstrap.min.css' />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <base href="/carRemainder/src/"> </base>
+</head>
+<body >
+    <table class="table" style="font-family: Arial">
+    <tr>
+        <td colspan="2" class="header">
+            <h1>
+                WebSifte Header
+            </h1>
+        </td>
+    </tr>
+    <tr>
+        <td class="leftMenu">
+            <a href="home">Home</a>
+            <a href="courses">Courses</a>
+            <a href="students">Students</a>
+        </td>
+        <td class="mainContent">
+           <ng-view></ng-view>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" class="footer">
+            <b>Website Footer</b>
+        </td>
+    </tr>
+</table>
+</body>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="controller.js"></script>
+</html>
