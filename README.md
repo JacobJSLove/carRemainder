@@ -7,3 +7,10 @@ Project of creating a reminder that will remaind about the most important things
 <li>Classes and first functions</li>
 <li>Prepared look in photoshop</li>
 </ul>
+</br>
+<p>v.0.0.2</p>
+<ul>
+<li>Error correction in index.js</li>
+<li>Code improvement with ESlint </li>
+<li>Test's</li>
+</ul>
