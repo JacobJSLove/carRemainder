@@ -10,7 +10,7 @@ Project of creating a reminder that will remaind about the most important things
 </br>
 <p>v.0.0.2</p>
 <ul>
-<li>Error correction in index.js</li>
+<li>Error correction in main.js</li>
 <li>Code improvement with ESlint </li>
 <li>Test's</li>
 </ul>
