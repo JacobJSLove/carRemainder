@@ -2,7 +2,7 @@
 /* eslint no-console: 0 */
 
 'use strict';
-import { vehicle, ClientCar } from '../src/index';
+import { vehicle, ClientCar } from '../src/main';
 const expect = chai.expect;
 
 describe ( 'vehicle', () => {
