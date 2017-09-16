@@ -1,0 +1,167 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmory imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmory exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		Object.defineProperty(exports, name, {
+/******/ 			configurable: false,
+/******/ 			enumerable: true,
+/******/ 			get: getter
+/******/ 		});
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+
+class vehicle {
+	constructor() {
+		this.ID = Math.floor( Math.random() * 10000 );
+	}
+}
+/* unused harmony export vehicle */
+
+class ClientCar extends vehicle {
+	constructor( name, ID ) {
+		super( ID );
+		this.name = name;
+		this.brakes = 0;
+		this.vehicleCondition = 0;
+		this.brakesCondition = 1;
+	}
+	get vehicleDetails() {
+		const carID = this.ID;
+		return carID;
+	}
+	get condition() {
+		return this.checkVehicleCondition();
+	}
+	checkBrakesCondition() {
+		if ( this.brakes === 1 ) {
+			alert( 'Brakes are in good condition' );
+			this.brakesCondition = 1;
+		} else {
+			alert( 'Brakes are in bad condition' );
+			this.brakesCondition = 0;
+		}
+	}
+	repairBrakes() {
+		console.log( 'New brakes are mounted' );
+		this.brakes = 1;
+	}
+	checkVehicleCondition( brakesCondition ){
+		let vehicle = this.brakesCondition;
+		if ( vehicle === 0 ) {
+			alert("test")
+			return this.vehicleCondition = 'Poor';
+		} else {
+			alert("test")
+			return this.vehicleCondition = 'Excellent';
+		}
+	}
+}
+/* harmony export (immutable) */ exports["a"] = ClientCar;
+
+
+
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_main__ = __webpack_require__(0);
+
+
+
+var app = angular
+.module('app', ["ui.router"])
+.config(function ($stateProvider ,$urlMatcherFactoryProvider, $urlRouterProvider, $locationProvider){
+ // $routeProvider.caseInsensitiveMatch = true; /* Students work like students */
+  $urlMatcherFactoryProvider.caseInsensitive(true);
+  $urlRouterProvider.otherwise("templates/home");
+  $stateProvider
+    .state("home", {
+      url: "/templates/home",
+      templateUrl:"templates/home.html",
+      controller:"homeController",
+      controllerAs: "homeCtrl"
+    })
+  // $locationProvider.hashPrefix('');
+})
+.controller('homeController', function($scope){
+const myCar = new __WEBPACK_IMPORTED_MODULE_0__src_main__["a" /* ClientCar */]( 'BMW X5' );
+console.log( myCar.vehicleDetails );
+$scope.checkVechicle = myCar.checkVehicleCondition;
+myCar.checkBrakesCondition();
+  this.carName = myCar.name;
+  this.carID = myCar.vehicleDetails;
+  this.carCondition = myCar.vehicleCondition;
+})
+            
+
+
+
+
+
+
+/***/ }
+/******/ ]);
