@@ -3,7 +3,7 @@ Project of creating a reminder that will remaind about the most important things
 </br>
 <p>To Do</p>
 <ul>
-<li>Find solution to update scope's after ng-click</li>
+<li>Find solution to update scope's after ng-click(Webpack add "use strict" which was already in file = error)</li>
 <li>Action buttons with functions from class's</li>
 <li>More test's</li>
 </ul>
