@@ -1,4 +1,3 @@
-'use strict';
 
 export class vehicle {
 	constructor() {
@@ -10,8 +9,8 @@ export class ClientCar extends vehicle {
 		super( ID );
 		this.name = name;
 		this.brakes = 0;
-		this.vehicleCondition = 0;
-		this.brakesCondition = 1;
+		this.vehicleCondition = 1;
+		this.brakesCondition = 0;
 	}
 	get vehicleDetails() {
 		const carID = this.ID;
@@ -36,13 +35,11 @@ export class ClientCar extends vehicle {
 	checkVehicleCondition( brakesCondition ){
 		let vehicle = this.brakesCondition;
 		if ( vehicle === 0 ) {
-			alert("test")
-			return this.vehicleCondition = 'Poor';
+			this.vehicleCondition = 'Poor';
+  		alert(this.vehicleCondition);
 		} else {
-			alert("test")
-			return this.vehicleCondition = 'Excellent';
+			this.vehicleCondition = 'Excellent';
+			console.log(this.vehicleCondition);
 		}
 	}
 }
-
-

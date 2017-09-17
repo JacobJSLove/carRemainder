@@ -5,8 +5,8 @@ var app = angular
 .module('app', ["ui.router"])
 .config(function ($stateProvider ,$urlMatcherFactoryProvider, $urlRouterProvider, $locationProvider){
  // $routeProvider.caseInsensitiveMatch = true; /* Students work like students */
-  $urlMatcherFactoryProvider.caseInsensitive(true);
-  $urlRouterProvider.otherwise("templates/home");
+/*  $urlMatcherFactoryProvider.caseInsensitive(true);
+  $urlRouterProvider.otherwise("templates/home");*/
   $stateProvider
     .state("home", {
       url: "/templates/home",
@@ -18,12 +18,15 @@ var app = angular
 })
 .controller('homeController', function($scope){
 const myCar = new ClientCar( 'BMW X5' );
-console.log( myCar.vehicleDetails );
-$scope.checkVechicle = myCar.checkVehicleCondition;
-myCar.checkBrakesCondition();
-  this.carName = myCar.name;
-  this.carID = myCar.vehicleDetails;
-  this.carCondition = myCar.vehicleCondition;
+  console.log( myCar.vehicleDetails );
+  $scope.carName = myCar.name;
+  $scope.carID = myCar.vehicleDetails;
+  $scope.carCondition = myCar.vehicleCondition;
+  $scope.checkVehicle = function(){
+    myCar.checkVehicleCondition();
+    $scope.carCondition = myCar.vehicleCondition;
+    
+  };
 })
             
 

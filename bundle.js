@@ -69,7 +69,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
 
 class vehicle {
 	constructor() {
@@ -83,8 +82,8 @@ class ClientCar extends vehicle {
 		super( ID );
 		this.name = name;
 		this.brakes = 0;
-		this.vehicleCondition = 0;
-		this.brakesCondition = 1;
+		this.vehicleCondition = 1;
+		this.brakesCondition = 0;
 	}
 	get vehicleDetails() {
 		const carID = this.ID;
@@ -109,17 +108,15 @@ class ClientCar extends vehicle {
 	checkVehicleCondition( brakesCondition ){
 		let vehicle = this.brakesCondition;
 		if ( vehicle === 0 ) {
-			alert("test")
-			return this.vehicleCondition = 'Poor';
+			this.vehicleCondition = 'Poor';
+  		alert(this.vehicleCondition);
 		} else {
-			alert("test")
-			return this.vehicleCondition = 'Excellent';
+			this.vehicleCondition = 'Excellent';
+			console.log(this.vehicleCondition);
 		}
 	}
 }
 /* harmony export (immutable) */ exports["a"] = ClientCar;
-
-
 
 
 
@@ -136,8 +133,8 @@ var app = angular
 .module('app', ["ui.router"])
 .config(function ($stateProvider ,$urlMatcherFactoryProvider, $urlRouterProvider, $locationProvider){
  // $routeProvider.caseInsensitiveMatch = true; /* Students work like students */
-  $urlMatcherFactoryProvider.caseInsensitive(true);
-  $urlRouterProvider.otherwise("templates/home");
+/*  $urlMatcherFactoryProvider.caseInsensitive(true);
+  $urlRouterProvider.otherwise("templates/home");*/
   $stateProvider
     .state("home", {
       url: "/templates/home",
@@ -149,12 +146,15 @@ var app = angular
 })
 .controller('homeController', function($scope){
 const myCar = new __WEBPACK_IMPORTED_MODULE_0__src_main__["a" /* ClientCar */]( 'BMW X5' );
-console.log( myCar.vehicleDetails );
-$scope.checkVechicle = myCar.checkVehicleCondition;
-myCar.checkBrakesCondition();
-  this.carName = myCar.name;
-  this.carID = myCar.vehicleDetails;
-  this.carCondition = myCar.vehicleCondition;
+  console.log( myCar.vehicleDetails );
+  $scope.carName = myCar.name;
+  $scope.carID = myCar.vehicleDetails;
+  $scope.carCondition = myCar.vehicleCondition;
+  $scope.checkVehicle = function(){
+    myCar.checkVehicleCondition();
+    $scope.carCondition = myCar.vehicleCondition;
+    
+  };
 })
             
 
