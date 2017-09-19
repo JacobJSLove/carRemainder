@@ -82,8 +82,7 @@ class ClientCar extends vehicle {
 		super( ID );
 		this.name = name;
 		this.brakes = 0;
-		this.vehicleCondition = 1;
-		this.brakesCondition = 0;
+		this.vehicleCondition = "Check!";
 	}
 	get vehicleDetails() {
 		const carID = this.ID;
@@ -95,28 +94,27 @@ class ClientCar extends vehicle {
 	checkBrakesCondition() {
 		if ( this.brakes === 1 ) {
 			alert( 'Brakes are in good condition' );
-			this.brakesCondition = 1;
+			this.brakes = 1;
 		} else {
 			alert( 'Brakes are in bad condition' );
-			this.brakesCondition = 0;
+			this.brakes = 0;
 		}
 	}
 	repairBrakes() {
-		console.log( 'New brakes are mounted' );
+		alert( 'New brakes are mounted' );
 		this.brakes = 1;
 	}
-	checkVehicleCondition( brakesCondition ){
-		let vehicle = this.brakesCondition;
+	checkVehicleCondition( brakes ){
+		let vehicle = this.brakes;
 		if ( vehicle === 0 ) {
 			this.vehicleCondition = 'Poor';
-  		alert(this.vehicleCondition);
 		} else {
 			this.vehicleCondition = 'Excellent';
-			console.log(this.vehicleCondition);
 		}
 	}
 }
 /* harmony export (immutable) */ exports["a"] = ClientCar;
+
 
 
 
@@ -128,13 +126,12 @@ class ClientCar extends vehicle {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_main__ = __webpack_require__(0);
 
 
-
 var app = angular
-.module('app', ["ui.router"])
+.module('app', ['ui.router', 'LocalStorageModule'])
 .config(function ($stateProvider ,$urlMatcherFactoryProvider, $urlRouterProvider, $locationProvider){
  // $routeProvider.caseInsensitiveMatch = true; /* Students work like students */
-/*  $urlMatcherFactoryProvider.caseInsensitive(true);
-  $urlRouterProvider.otherwise("templates/home");*/
+  $urlMatcherFactoryProvider.caseInsensitive(true);
+  $urlRouterProvider.otherwise("templates/home");
   $stateProvider
     .state("home", {
       url: "/templates/home",
@@ -142,25 +139,63 @@ var app = angular
       controller:"homeController",
       controllerAs: "homeCtrl"
     })
+    .state("config", {
+      url: "/templates/config",
+      templateUrl:"templates/config.html",
+      controller:"configController",
+      controllerAs: "configCtrl"
+    })
   // $locationProvider.hashPrefix('');
 })
-.controller('homeController', function($scope){
-const myCar = new __WEBPACK_IMPORTED_MODULE_0__src_main__["a" /* ClientCar */]( 'BMW X5' );
-  console.log( myCar.vehicleDetails );
-  $scope.carName = myCar.name;
-  $scope.carID = myCar.vehicleDetails;
-  $scope.carCondition = myCar.vehicleCondition;
-  $scope.checkVehicle = function(){
-    myCar.checkVehicleCondition();
-    $scope.carCondition = myCar.vehicleCondition;
-    
+// Future 
+.config(['localStorageServiceProvider',function(localStorageServiceProvider) {
+  localStorageServiceProvider.setPrefix('carRemainder');
+}])
+
+.factory('Car',function(){
+function getCar (carName) { 
+  const myCar = new __WEBPACK_IMPORTED_MODULE_0__src_main__["a" /* ClientCar */]( carName );
+  return{
+      name:myCar.name,
+      id:myCar.vehicleDetails,
+      brakes:myCar.brakes,
+      condition:myCar.vehicleCondition,
+      checkVehicle: function(){
+      myCar.checkVehicleCondition();
+      return this.carCondition = myCar.vehicleCondition;
+    },
+      checkBrakes: function(){
+      myCar.checkBrakesCondition();
+    },
+      repairB: function(){
+      myCar.repairBrakes();
+      return this.brakes = myCar.brakes;
+    },
   };
+};
+
+  const Car = getCar('BMW X5');
+  return Car;
 })
-            
+.controller('homeController', function(Car){
+  this.yourClass = 'big'
+  this.carName = Car.name;
+  this.carID = Car.id;
+  this.carCondition = Car.condition;
+  this.checkV = Car.checkVehicle;
+  this.checkB = Car.checkBrakes;
 
-
-
-
+}) 
+.controller('configController', function(Car){
+  this.yourClass = 'big active';
+  this.carName = Car.name;
+  this.carID = Car.id;
+  this.carCondition = Car.condition;
+  this.checkV = Car.checkVehicle;
+  this.checkB = Car.checkBrakes;
+  this.brakes = Car.brakes;
+  this.rBrakes = Car.repairB;
+}) 
 
 
 /***/ }
