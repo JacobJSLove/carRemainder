@@ -29,3 +29,11 @@ Project of creating a reminder that will remaind about the most important things
 <li>Js file combination(CS6 classes problems in import) bundle.js</li>
 <li>Simple css and templates</li>
 </ul>
+<p>v.1.0.0</p>
+<ul>
+<li>New template</li>
+<li>Working template's with functions</li>
+<li>New factory = Generating Car's in future</li>
+<li>Preparations for saving data in localstorage</li>
+<li>Test's</li>
+</ul>
