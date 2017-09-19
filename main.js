@@ -9,8 +9,7 @@ export class ClientCar extends vehicle {
 		super( ID );
 		this.name = name;
 		this.brakes = 0;
-		this.vehicleCondition = 1;
-		this.brakesCondition = 0;
+		this.vehicleCondition = "Check!";
 	}
 	get vehicleDetails() {
 		const carID = this.ID;
@@ -22,24 +21,23 @@ export class ClientCar extends vehicle {
 	checkBrakesCondition() {
 		if ( this.brakes === 1 ) {
 			alert( 'Brakes are in good condition' );
-			this.brakesCondition = 1;
+			this.brakes = 1;
 		} else {
 			alert( 'Brakes are in bad condition' );
-			this.brakesCondition = 0;
+			this.brakes = 0;
 		}
 	}
 	repairBrakes() {
-		console.log( 'New brakes are mounted' );
+		alert( 'New brakes are mounted' );
 		this.brakes = 1;
 	}
-	checkVehicleCondition( brakesCondition ){
-		let vehicle = this.brakesCondition;
+	checkVehicleCondition( brakes ){
+		let vehicle = this.brakes;
 		if ( vehicle === 0 ) {
 			this.vehicleCondition = 'Poor';
-  		alert(this.vehicleCondition);
 		} else {
 			this.vehicleCondition = 'Excellent';
-			console.log(this.vehicleCondition);
 		}
 	}
 }
+
