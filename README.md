@@ -1,12 +1,6 @@
 # carRemainder
 Project of creating a reminder that will remaind about the most important things in the car(tire life,suspension state, fuel economy and more) *Angular 1.5,boilerplate(tests,consistency of the code,writing rules)
 </br>
-<p>To Do</p>
-<ul>
-<li>Find solution to update scope's after ng-click(Webpack add "use strict" which was already in file = error)</li>
-<li>Action buttons with functions from class's</li>
-<li>More test's</li>
-</ul>
 </br>
 </br>
 <p>v.0.0.1</p>
@@ -28,6 +22,7 @@ Project of creating a reminder that will remaind about the most important things
 <li>Added angular</li>
 <li>Js file combination(CS6 classes problems in import) bundle.js</li>
 <li>Simple css and templates</li>
+<li><s>Find solution to update scope's after ng-click(Webpack add "use strict" which was already in file = error)</s></li>
 </ul>
 <p>v.1.0.0</p>
 <ul>
